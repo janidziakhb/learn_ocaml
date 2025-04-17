@@ -49,3 +49,10 @@ let  flatten list =
 
 flatten [One "a"; Many [One "b"; Many [One "c" ;One "d"]; One "e"]];;
 
+(*Task 6 Compress oprdered list of strings *) 
+
+let rec compress = function 
+ | a :: (b :: _ as t) -> if a == b then compress t else a :: compress t
+ | t -> t;;
+
+compress ["a"; "a"; "a"; "a"; "b"; "c"; "c"; "a"; "a"; "d"; "e"; "e"; "e"; "e"];;
