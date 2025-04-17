@@ -34,3 +34,18 @@ let is_palindrome list =
 is_palindrome ["a" ; "b" ; "a"];;
 is_palindrome ["a"];;
 is_palindrome ["a"; "b"];;
+
+(*Task 5 - flattening the list*)
+type 'a node =
+  | One of 'a 
+  | Many of 'a node list
+
+let  flatten list = 
+  let rec aux acc = function 
+    | [] -> acc
+    | One i :: t -> aux (acc @ [i]) t
+    | Many l :: t -> aux (aux acc l) t
+  in aux [] list;;
+
+flatten [One "a"; Many [One "b"; Many [One "c" ;One "d"]; One "e"]];;
+
